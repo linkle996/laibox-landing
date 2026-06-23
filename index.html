@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Laibox — Snap receipts. Export to CSV. Done.</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧾</text></svg>">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;color:#1a1a2e;background:#fff;line-height:1.6}
+.container{max-width:960px;margin:0 auto;padding:0 24px}
+/* Hero */
+.hero{padding:80px 0 60px;text-align:center;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);color:#fff}
+.hero .logo{font-size:64px;margin-bottom:16px}
+.hero h1{font-size:42px;font-weight:800;margin-bottom:12px;letter-spacing:-0.5px}
+.hero .tagline{font-size:18px;opacity:.85;max-width:540px;margin:0 auto 8px}
+.hero .sub{font-size:14px;opacity:.6;margin-bottom:32px}
+.hero .cta{display:inline-block;padding:14px 36px;background:#e94560;color:#fff;border-radius:8px;font-weight:700;font-size:16px;text-decoration:none;transition:transform .15s}
+.hero .cta:hover{transform:scale(1.03)}
+.hero .cta-sub{display:block;margin-top:12px;font-size:13px;opacity:.5}
+/* Problem */
+.problem{padding:64px 0;text-align:center}
+.problem h2{font-size:24px;margin-bottom:24px;color:#555}
+.problem .pain{font-size:16px;color:#888;max-width:480px;margin:0 auto 32px;line-height:1.8}
+/* Features */
+.features{padding:80px 0;background:#f8f9ff}
+.features h2{text-align:center;font-size:28px;margin-bottom:48px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px}
+.card{text-align:center;padding:32px 20px;border-radius:12px;background:#fff;box-shadow:0 2px 12px rgba(0,0,0,.04)}
+.card .icon{font-size:36px;margin-bottom:12px}
+.card h3{font-size:17px;margin-bottom:8px}
+.card p{font-size:14px;color:#666}
+/* How it works */
+.how{padding:80px 0;text-align:center}
+.how h2{font-size:28px;margin-bottom:48px}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px;max-width:720px;margin:0 auto}
+.step .num{display:inline-block;width:40px;height:40px;line-height:40px;border-radius:50%;background:#e94560;color:#fff;font-weight:700;font-size:18px;margin-bottom:12px}
+.step h3{font-size:16px;margin-bottom:6px}
+.step p{font-size:13px;color:#888}
+/* Pricing — prepaid credits */
+.pricing{padding:80px 0;background:#f8f9ff}
+.pricing h2{text-align:center;font-size:28px;margin-bottom:12px}
+.pricing .pricing-sub{text-align:center;color:#888;font-size:14px;margin-bottom:48px}
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:640px;margin:0 auto}
+.plan{background:#fff;border-radius:12px;padding:32px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.plan.best{border:2px solid #e94560;position:relative}
+.plan.best::before{content:"Best Value";position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#e94560;color:#fff;padding:4px 16px;border-radius:12px;font-size:11px;font-weight:600}
+.plan h3{font-size:20px;margin-bottom:8px}
+.plan .price{font-size:36px;font-weight:800;margin-bottom:4px}
+.plan .scans{font-size:14px;color:#888;margin-bottom:16px}
+.plan .per{font-size:12px;color:#aaa;margin-bottom:20px}
+.plan ul{list-style:none;margin:20px 0 28px;text-align:left;font-size:14px;color:#555}
+.plan ul li{padding:4px 0}
+.plan ul li::before{content:"✓ ";color:#52c41a;font-weight:700}
+.plan .btn{display:block;padding:12px;border-radius:8px;font-weight:600;font-size:15px;text-decoration:none;transition:all .15s}
+.plan .btn-red{background:#e94560;color:#fff}.plan .btn-red:hover{background:#d63850}
+.plan .btn-outline{background:#fff;color:#e94560;border:2px solid #e94560}.plan .btn-outline:hover{background:#fff5f5}
+/* Privacy angle */
+.privacy-note{padding:48px 0;text-align:center}
+.privacy-note h2{font-size:22px;margin-bottom:12px}
+.privacy-note p{font-size:14px;color:#888;max-width:500px;margin:0 auto}
+.privacy-note .highlight{color:#e94560;font-weight:600}
+/* Footer */
+.footer{padding:40px 0;text-align:center;font-size:13px;color:#999;border-top:1px solid #eee}
+.footer a{color:#e94560}
+@media(max-width:640px){.hero h1{font-size:28px}.hero{padding:48px 0 36px}.plans,.steps{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="logo">🧾</div>
+    <h1>Laibox <span style="font-weight:400;font-size:24px">来盒</span></h1>
+    <p class="tagline">Snap a photo of your receipt.<br>We read it. Export to CSV for your accountant.</p>
+    <p class="sub">No more manual data entry. No more shoebox of paper.</p>
+    <a href="/public/login.html" class="cta">Get Started — 20 Scans Free</a>
+    <span class="cta-sub">No credit card required. Sign in with Google.</span>
+  </div>
+</section>
+
+<!-- Problem -->
+<section class="problem">
+  <div class="container">
+    <h2>Running a small business means receipts everywhere.</h2>
+    <p class="pain">Stuffed in envelopes. Lost in email. Handed to your accountant in a plastic bag.<br><br>You know you should track expenses better. But who has time to type in every taxi receipt and restaurant bill?</p>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="features">
+  <div class="container">
+    <h2>What Laibox Does</h2>
+    <div class="grid">
+      <div class="card"><div class="icon">📸</div><h3>Snap & Go</h3><p>Take a photo of any receipt or invoice. We do the rest.</p></div>
+      <div class="card"><div class="icon">🔍</div><h3>Smart Reading</h3><p>Vendor, amount, date, tax, invoice number — extracted automatically. Chinese VAT invoices, English receipts, train tickets — we handle them all.</p></div>
+      <div class="card"><div class="icon">📊</div><h3>CSV Export</h3><p>End of month? Export everything as CSV. Drop it in QuickBooks, Xero, or send straight to your accountant.</p></div>
+      <div class="card"><div class="icon">🏷️</div><h3>Auto Categories</h3><p>Food, transport, rent, supplies, tax — sorted automatically. Filter and search anytime.</p></div>
+      <div class="card"><div class="icon">🔒</div><h3>Privacy First</h3><p>Your receipts are <strong>processed, not stored</strong>. Original files are discarded after OCR. Only structured data is kept.</p></div>
+      <div class="card"><div class="icon">🔄</div><h3>Duplicate Detection</h3><p>Snap the same receipt twice? We catch it — no double-counting.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- How it works -->
+<section class="how">
+  <div class="container">
+    <h2>Three Steps. That's It.</h2>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><h3>Snap</h3><p>Take a photo of your receipt with your phone</p></div>
+      <div class="step"><div class="num">2</div><h3>Review</h3><p>Check the extracted data, fix anything if needed</p></div>
+      <div class="step"><div class="num">3</div><h3>Export</h3><p>Download CSV at month-end for your accountant</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <h2>Simple Monthly Pricing</h2>
+    <p class="pricing-sub">Subscribe monthly. Cancel anytime. 20 free scans to try.</p>
+    <div class="plans">
+      <div class="plan">
+        <h3>Basic</h3>
+        <div class="price">$5<span style="font-size:14px;font-weight:400">/mo</span></div>
+        <div class="scans">300 scans / month</div>
+        <ul>
+          <li>PDF & image support</li>
+          <li>Chinese + English OCR</li>
+          <li>CSV export</li>
+          <li>Cancel anytime</li>
+        </ul>
+        <a href="/public/login.html" class="btn btn-outline">Start Free Trial</a>
+      </div>
+      <div class="plan best">
+        <h3>Pro</h3>
+        <div class="price">$10<span style="font-size:14px;font-weight:400">/mo</span></div>
+        <div class="scans">Unlimited scans</div>
+        <ul>
+          <li>Everything in Basic</li>
+          <li>No scan limits</li>
+          <li>Priority processing</li>
+          <li>Cancel anytime</li>
+        </ul>
+        <a href="/public/login.html" class="btn btn-red">Start Free Trial</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Privacy -->
+<section class="privacy-note">
+  <div class="container">
+    <h2>Your receipts are <span class="highlight">processed, not stored</span>.</h2>
+    <p>After OCR, original files are discarded. We only keep the structured data — vendor, amount, date, category. Nothing else. Read our <a href="/public/legal/privacy.html">Privacy Policy</a>.</p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <p>Laibox &copy; 2026. Built for small business owners who hate paperwork.</p>
+    <p style="margin-top:4px"><a href="mailto:support@tsuibian.com">support@tsuibian.com</a> &middot; <a href="/public/legal/terms.html">Terms</a> &middot; <a href="/public/legal/privacy.html">Privacy</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
